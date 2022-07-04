@@ -222,4 +222,5 @@ const crearEgresoHTML = (egreso) => {
         </div>
     </div>
         `;
+        return egresoHTML
 }
