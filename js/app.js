@@ -222,5 +222,9 @@ const crearEgresoHTML = (egreso) => {
         </div>
     </div>
         `;
-        return egresoHTML
+    return egresoHTML
+}
+let eliminarEgreso = (id) => {
+    let indiceEliminar = egresos.findIndex(egreso => egreso.id === id)
+    egresos.splice(indiceEliminar,1)
 }
