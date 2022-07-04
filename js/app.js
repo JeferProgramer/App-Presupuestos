@@ -192,3 +192,9 @@ const crearIngresoHTML = (ingreso) => {
     </div>
     `;
 }
+const eliminarIngreso = (id) => {
+    let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
+    ingresos.splice(indiceEliminar, 1)
+    cargarCabecero();
+    cargarIngresos()
+}
