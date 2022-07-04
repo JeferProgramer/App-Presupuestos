@@ -176,7 +176,7 @@ const cargarIngresos = () => {
     for(let ingreso of ingresos){
         ingresosHTML += crearIngresoHTML(ingreso);
     }
-    document.getElementById('lista-ingresos').innerHTML = ingresoHTML;
+    document.getElementById('lista-ingresos').innerHTML = ingresosHTML;
 }
 const crearIngresoHTML = (ingreso) => {
     let ingresoHTML =  `
