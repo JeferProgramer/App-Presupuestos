@@ -143,6 +143,8 @@ const egresos = [
 ]
 let cargarApp = () => {
     cargarCabecero();
+    cargarIngresos();
+    cargarEgresos();
 }
 let totalIngresos = () => {
     let total = 0;
