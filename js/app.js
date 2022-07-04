@@ -151,3 +151,21 @@ let totalIngresos = () => {
     }
     return total
 }
+let totalEgresos = () => {
+    let totalEgreso = 0;
+    for(let egreso of egresos){
+        totalEgreso += egreso.valor
+    }
+    return totalEgreso;
+}
+let cargarCabecero = () => {
+    let presupuesto = totalIngresos() - totalEgresos()
+    let porcentajeEgreso = totalEgresos()/totalIngresos()
+    document.getElementById('presupuesto').innerHTML
+}
+const formatoMoneda = (valor) => {
+    return valor.toLocaleString('es-ES',{style:'currency', currency:'EUR', minimumFractionDigits:2})
+}
+const formatoPorcentaje = () => {
+    return valor.toLocaleString('en-US', {style:'percent', minimumFractionDigits:2}) 
+}
