@@ -196,5 +196,12 @@ const eliminarIngreso = (id) => {
     let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
     ingresos.splice(indiceEliminar, 1)
     cargarCabecero();
-    cargarIngresos()
+    cargarIngresos();
+}
+const cargarEgresos = () => {
+    let egresosHTML = '';
+    for(let egreso of egresos){
+        egresosHTML += crearEgresoHTML(egreso);
+    }
+    document.getElementById('lista-egresos').innerHTML = egresosHTML;
 }
