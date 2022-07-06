@@ -230,3 +230,9 @@ let eliminarEgreso = (id) => {
     let indiceEliminar = egresos.findIndex(egreso => egreso.id === id)
     egresos.splice(indiceEliminar,1)
 }
+let agregarDato = () => {
+    console.log('agregar dato entre')
+    let forma = document.forms['forma'];
+    let tipo = forma['tipo']
+    console.log(tipo)
+}
