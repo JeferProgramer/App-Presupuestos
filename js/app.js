@@ -234,6 +234,8 @@ const crearEgresoHTML = (egreso) => {
 let eliminarEgreso = (id) => {
     let indiceEliminar = egresos.findIndex(egreso => egreso.id === id)
     egresos.splice(indiceEliminar,1)
+    cargarCabecero();
+    cargarEgresos();
 }
 let agregarDato = () => {
     let forma = document.forms['forma'];
@@ -249,7 +251,7 @@ let agregarDato = () => {
         else if(tipo.value === 'egreso'){
             egresos.push(new Egreso(descripcion.value, +valor.value))
             cargarCabecero();
-            cargarEgresos;
+            cargarEgresos();
         }
     }
 }
