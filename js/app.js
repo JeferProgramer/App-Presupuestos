@@ -138,7 +138,7 @@ const ingresos = [
     new Ingreso('Venta coche', 1500)
 ];
 const egresos = [
-    new Egreso('Renta departamento',9000),
+    new Egreso('Renta departamento',900),
     new Egreso('Ropa', 400)
 ]
 let cargarApp = () => {
@@ -146,12 +146,12 @@ let cargarApp = () => {
     cargarIngresos();
     cargarEgresos();
 }
-let totalIngresos = () => {
-    let total = 0;
+let totalIngresos = ()=>{
+    let totalIngreso = 0;
     for(let ingreso of ingresos){
-        total += ingreso.valor;
+        totalIngreso += ingreso.valor;
     }
-    return total
+    return totalIngreso;
 }
 let totalEgresos = () => {
     let totalEgreso = 0;
@@ -163,7 +163,12 @@ let totalEgresos = () => {
 let cargarCabecero = () => {
     let presupuesto = totalIngresos() - totalEgresos()
     let porcentajeEgreso = totalEgresos()/totalIngresos()
-    document.getElementById('presupuesto').innerHTML
+    document.getElementById('presupuesto').innerHTML = formatoMoneda(presupuesto)
+    document.getElementById('porcentaje').innerHTML = formatoPorcentaje(porcentajeEgreso)
+    document.getElementById('ingresos').innerHTML =
+    formatoMoneda(totalIngresos());
+    document.getElementById('egresos').innerHTML = formatoMoneda(totalEgresos());
+
 }
 const formatoMoneda = (valor) => {
     return valor.toLocaleString('es-ES',{style:'currency', currency:'EUR', minimumFractionDigits:2})
@@ -231,8 +236,20 @@ let eliminarEgreso = (id) => {
     egresos.splice(indiceEliminar,1)
 }
 let agregarDato = () => {
-    console.log('agregar dato entre')
     let forma = document.forms['forma'];
     let tipo = forma['tipo']
-    console.log(tipo)
+    let descripcion = forma['descripcion']
+    let valor = forma['valor'];
+    if(descripcion.value !== '' && valor.value !== ''){
+        if(tipo.value === 'ingreso'){
+            ingresos.push(new Ingreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarIngresos();
+        }
+        else if(tipo.value === 'egreso'){
+            egresos.push(new Egreso(descripcion.value, +valor.value))
+            cargarCabecero();
+            cargarEgresos;
+        }
+    }
 }
