@@ -78,7 +78,7 @@ const cargarEgresos = () => {
 }
 const crearEgresoHTML = (egreso) => {
     let porcentaje = 0;
-    if(porcentaje === 0){
+    if(porcentaje.isNaN){
         return porcentaje
     }else{
         porcentaje = egreso.valor/totalEgresos()
