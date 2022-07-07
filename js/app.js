@@ -37,9 +37,6 @@ const formatoMoneda = (valor) => {
     return valor.toLocaleString('es-ES',{style:'currency', currency:'EUR', minimumFractionDigits:2})
 }
 const formatoPorcentaje = (valor) => {
-    if(valor.isNaN){
-        return 0;
-    }
     return valor.toLocaleString('en-US', {style:'percent', minimumFractionDigits:2}) 
 }
 const cargarIngresos = () => {
@@ -80,12 +77,20 @@ const cargarEgresos = () => {
     document.getElementById('lista-egresos').innerHTML = egresosHTML;
 }
 const crearEgresoHTML = (egreso) => {
+    let porcentaje = 0;
+    if(porcentaje === 0){
+        return porcentaje
+    }else{
+        porcentaje = egreso.valor/totalEgresos()
+    }
+    console.log(porcentaje)
+
     let egresoHTML = `
         <div class="elemento limpiarEstilos">
         <div class="elemento_descripcion">${egreso.descripcion}</div>
         <div class="derecha limpiarEstilos">
             <div class="elemento_valor">- ${formatoMoneda(egreso.valor)}</div>
-            <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor/totalEgresos())}</div>
+            <div class="elemento_porcentaje">${formatoPorcentaje(porcentaje)}</div>
             <div class="elemento_eliminar">
                 <button class='elemento_eliminar--btn'>
                     <ion-icon name="close-circle-outline"
