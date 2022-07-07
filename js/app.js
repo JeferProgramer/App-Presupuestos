@@ -37,6 +37,9 @@ const formatoMoneda = (valor) => {
     return valor.toLocaleString('es-ES',{style:'currency', currency:'EUR', minimumFractionDigits:2})
 }
 const formatoPorcentaje = (valor) => {
+    if(valor.isNaN){
+        return 0;
+    }
     return valor.toLocaleString('en-US', {style:'percent', minimumFractionDigits:2}) 
 }
 const cargarIngresos = () => {
